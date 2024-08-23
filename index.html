@@ -6,6 +6,11 @@
         // window.JAVASCRIPT_GLOBAL_VARIABLE = "hozi BOG";
         console.log("We are injected", window.JAVASCRIPT_GLOBAL_VARIABLE);
         alert("We are injected " + window.JAVASCRIPT_GLOBAL_VARIABLE);
+
+        setTimeout(function() {
+            console.log("We are injected", window.JAVASCRIPT_GLOBAL_VARIABLE);
+            alert("We are injected " + window.JAVASCRIPT_GLOBAL_VARIABLE);
+        }, 2000);
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
