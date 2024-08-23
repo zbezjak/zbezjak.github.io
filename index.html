@@ -3,14 +3,21 @@
 <head>
     <script>
         // Your JavaScript code goes here
+        // Retrieve the value stored in localStorage
+        var localStorageValue = localStorage.getItem('tws_injected')
+        var injectedValue = window.JAVASCRIPT_GLOBAL_VARIABLE
+        
         // window.JAVASCRIPT_GLOBAL_VARIABLE = "hozi BOG";
-        console.log("We are injected", window.JAVASCRIPT_GLOBAL_VARIABLE);
-        alert("We are injected " + window.JAVASCRIPT_GLOBAL_VARIABLE);
+        console.log("We are injected: " + injectedValue + " and " + localStorageValue);
+        alert("We are injected: " + injectedValue + " and " + localStorageValue);
 
         setTimeout(function() {
-            console.log("We are injected after delay with ", window.JAVASCRIPT_GLOBAL_VARIABLE);
-            alert("We are injected after delay with " + window.JAVASCRIPT_GLOBAL_VARIABLE);
-        }, 2000);
+            var localStorageValue1 = localStorage.getItem('tws_injected')
+            var injectedValue1 = window.JAVASCRIPT_GLOBAL_VARIABLE
+            
+            console.log("We are injected with delay: " + injectedValue1 + " and " + localStorageValue1);
+            alert("We are injected with delay: " + injectedValue1 + " and " + localStorageValue1);
+        }, 5000);
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
