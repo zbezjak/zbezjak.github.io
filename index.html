@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <script>
+        console.log("At the start: ", Client.getInjectedValueBoolean());
+        
         if (typeof Client !== 'undefined') {
             // Call the Android JavaScript interface methods
             var booleanValue = Client.getInjectedValueBoolean();
