@@ -2,29 +2,18 @@
 <html lang="en">
 <head>
     <script>
-        console.log("At the start: ", Client.getInjectedValueBoolean());
-        
+        let tws_injected = false;
         if (typeof Client !== 'undefined') {
-            // Call the Android JavaScript interface methods
-            var booleanValue = Client.getInjectedValueBoolean();
-            var stringValue = Client.getInjectedValueString();
-                
-            // Print values to the console
-            console.log("Boolean value from Android:", booleanValue);
-            console.log("String value from Android:", stringValue);
-                
-            // Optionally show values in alerts
-            alert("Boolean value from Client: " + booleanValue);
-            alert("String value from Client: " + stringValue);
-        } else {
-             console.log("JavaScript interface 'Client' is not available.");
+            tws_injected = Client.getInjectedValueBoolean();
         }
+
+        alert("Boolean value from Client: " + tws_injected);
+        console.log("Boolean value from Client: ", tws_injected);
         
         // Retrieve the value stored in localStorage
-        var localStorageValue = localStorage.getItem('tws_injected')
-        var injectedValue = window.JAVASCRIPT_GLOBAL_VARIABLE
+        var localStorageValue = localStorage.getItem('tws_injected');
+        var injectedValue = window.JAVASCRIPT_GLOBAL_VARIABLE;
         
-        // window.JAVASCRIPT_GLOBAL_VARIABLE = "hozi BOG";
         console.log("We are injected: " + injectedValue + " and " + localStorageValue);
         alert("We are injected: " + injectedValue + " and " + localStorageValue);
         
