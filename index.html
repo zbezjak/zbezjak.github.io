@@ -2,10 +2,7 @@
 <html lang="en">
 <head>
     <script>
-        let tws_injected = false;
-        if (typeof Client !== 'undefined') {
-            tws_injected = Client.getInjectedValueBoolean();
-        }
+        let tws_injected = (typeof Client !== 'undefined') ? Client.getInjectedValueBoolean() : false;
 
         alert("Boolean value from Client: " + tws_injected);
         console.log("Boolean value from Client: ", tws_injected);
