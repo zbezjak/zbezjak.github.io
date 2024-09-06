@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>
-        let tws_injected = (typeof Client !== 'undefined') ? Client.getInjectedValueBoolean() : false;
-
-        alert("Boolean value from Client: " + tws_injected);
-        console.log("Boolean value from Client: ", tws_injected);
-        
-        // Retrieve the value stored in localStorage
-        var localStorageValue = localStorage.getItem('tws_injected');
-        var injectedValue = window.JAVASCRIPT_GLOBAL_VARIABLE;
-        
-        console.log("We are injected: " + injectedValue + " and " + localStorageValue);
-        alert("We are injected: " + injectedValue + " and " + localStorageValue);
-        
-        setTimeout(function() {
-            var localStorageValue1 = localStorage.getItem('tws_injected')
-            var injectedValue1 = window.JAVASCRIPT_GLOBAL_VARIABLE
-            
-            console.log("We are injected with delay: " + injectedValue1 + " and " + localStorageValue1);
-            alert("We are injected with delay: " + injectedValue1 + " and " + localStorageValue1);
-        }, 5000);
-    </script>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
+    <title>Current UTC Time</title>
+    <script>
+        function displayCurrentUTCTime() {
+            const now = new Date();
+            const utcTime = now.getUTCHours().toString().padStart(2, '0') + ':' +
+                            now.getUTCMinutes().toString().padStart(2, '0') + ':' +
+                            now.getUTCSeconds().toString().padStart(2, '0');
+            document.getElementById('utc-time').innerText = utcTime;
+        }
+
+        // Update the time every second
+        setInterval(displayCurrentUTCTime, 1000);
+    </script>
 </head>
+<body>
+    <h1>Current UTC Time</h1>
+    <p id="utc-time"></p>
+
+    <script>
+        // Initial display of the current UTC time
+        displayCurrentUTCTime();
+    </script>
+</body>
 </html>
