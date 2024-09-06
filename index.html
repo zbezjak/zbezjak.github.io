@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Current UTC Time</title>
     <script>
+        if (tws_injected) {
+            console.log('tws_injected is available: true');
+        } else {
+            console.log('tws_injected is available: false');
+        }
+        
         function displayCurrentUTCTime() {
             const now = new Date();
             const utcTime = now.getUTCHours().toString().padStart(2, '0') + ':' +
