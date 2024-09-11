@@ -8,7 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 0 10px; /* Added padding on left and right */
             background-color: #f5f5f5;
             display: flex;
             justify-content: center;
@@ -21,7 +21,7 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            max-width: 90%;
+            max-width: 100%;
             width: 400px;
             text-align: center;
             position: relative;
@@ -33,20 +33,6 @@
         p {
             font-size: 1em;
             margin-bottom: 20px;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 1em;
-            color: #fff;
-            background-color: #007bff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .button:hover {
-            background-color: #0056b3;
         }
         .footer {
             font-size: 0.8em;
@@ -63,7 +49,7 @@
         }
         @media (max-width: 600px) {
             .container {
-                width: 90%;
+                width: 100%;
                 padding: 15px;
             }
             h1 {
@@ -79,7 +65,6 @@
     <div class="container">
         <h1>Popup Snippet</h1>
         <p>You are currently viewing a popup snippet. When you close this snippet, you will be redirected to a page with 3 tab snippets containing 24ur.com content. Each snippet will have an injected CSS to hide the content's header.</p>
-        <a href="#" class="button" onclick="window.close(); return false;">Close Snippet</a>
         <div class="utc-time" id="utcTime"></div>
         <div class="footer">
             &copy; 2024 Zan Bezjak
