@@ -2,35 +2,99 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Current UTC Time</title>
-    <script>
-        if (tws_injected) {
-            console.log('tws_injected is available: true');
-        } else {
-            console.log('tws_injected is available: false');
+    <title>Popup Snippet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
         }
-        
-        function displayCurrentUTCTime() {
-            const now = new Date();
-            const utcTime = now.getUTCHours().toString().padStart(2, '0') + ':' +
-                            now.getUTCMinutes().toString().padStart(2, '0') + ':' +
-                            now.getUTCSeconds().toString().padStart(2, '0');
-            document.getElementById('utc-time').innerText = utcTime;
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 90%;
+            width: 400px;
+            text-align: center;
+            position: relative;
         }
-
-        // Update the time every second
-        setInterval(displayCurrentUTCTime, 1000);
-    </script>
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            font-size: 0.8em;
+            color: #777;
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+        }
+        .utc-time {
+            font-size: 1em;
+            margin-top: 20px;
+            margin-bottom: 40px; /* Added margin to create space between time and footer */
+        }
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.2em;
+            }
+            p {
+                font-size: 0.9em;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Current UTC Time</h1>
-    <p id="utc-time"></p>
+    <div class="container">
+        <h1>Popup Snippet</h1>
+        <p>You are currently viewing a popup snippet. When you close this snippet, you will be redirected to a page with 3 tab snippets containing 24ur.com content. Each snippet will have an injected CSS to hide the content's header.</p>
+        <a href="#" class="button" onclick="window.close(); return false;">Close Snippet</a>
+        <div class="utc-time" id="utcTime"></div>
+        <div class="footer">
+            &copy; 2024 Zan Bezjak
+        </div>
+    </div>
 
     <script>
-        // Initial display of the current UTC time
-        displayCurrentUTCTime();
+        function updateUTC() {
+            const now = new Date();
+            const utcString = now.toISOString().replace('T', ' ').substring(0, 19);
+            document.getElementById('utcTime').textContent = `Current UTC Time: ${utcString}`;
+        }
+
+        updateUTC();
+        setInterval(updateUTC, 1000); // Update the time every second
     </script>
 </body>
 </html>
