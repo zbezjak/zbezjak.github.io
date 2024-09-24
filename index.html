@@ -1,85 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Popup Snippet</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0 10px; /* Added padding on left and right */
-            background-color: #f5f5f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #333;
-        }
-        .container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-width: 100%;
-            width: 400px;
-            text-align: center;
-            position: relative;
-        }
-        h1 {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 1em;
-            margin-bottom: 20px;
-        }
-        .footer {
-            font-size: 0.8em;
-            color: #777;
-            position: absolute;
-            bottom: 10px;
-            width: 100%;
-            text-align: center;
-        }
-        .utc-time {
-            font-size: 1em;
-            margin-top: 20px;
-            margin-bottom: 40px; /* Added margin to create space between time and footer */
-        }
-        @media (max-width: 600px) {
-            .container {
-                width: 100%;
-                padding: 15px;
-            }
-            h1 {
-                font-size: 1.2em;
-            }
-            p {
-                font-size: 0.9em;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testing injection</title>
+  <script>
+    console.log('Will append two scripts');
+
+    // First script
+    var script1 = document.createElement('script');
+    script1.innerText = 'console.log("Script 1 has executed successfully")';
+    document.head.append(script1);
+
+    // Second script
+    var script2 = document.createElement('script');
+    script2.src = 'https://raw.githubusercontent.com/mihahoz/debug-file-server/refs/heads/main/inject-property.js';
+    
+    // Ensure the second script runs immediately after being appended
+    script2.onload = function() {
+      console.log('Script 2 (inject-property.js) has executed successfully');
+    };
+    
+    document.head.append(script2);
+
+    console.log('Did append both scripts');
+  </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Popup Snippet</h1>
-        <p>You are currently viewing a popup snippet. When you close this snippet, you will be redirected to a page with 3 tab snippets containing 24ur.com content. Each snippet will have an injected CSS to hide the content's header.</p>
-        <div class="utc-time" id="utcTime"></div>
-        <div class="footer">
-            &copy; 2024 Zan Bezjak
-        </div>
-    </div>
-
+  <h1>
+     The value for `tws_injected` is:
+  </h1>
+  <p>
     <script>
-        function updateUTC() {
-            const now = new Date();
-            const utcString = now.toISOString().replace('T', ' ').substring(0, 19);
-            document.getElementById('utcTime').textContent = `Current UTC Time: ${utcString}`;
-        }
-
-        updateUTC();
-        setInterval(updateUTC, 1000); // Update the time every second
-    </script>
+        // Check if `tws_injected` is defined
+        console.log('Variable will load now');
+        var value = (typeof tws_injected !== 'undefined') ? tws_injected : 'undefined';
+        document.write(value);
+     </script>
+  </p>
 </body>
 </html>
