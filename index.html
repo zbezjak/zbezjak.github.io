@@ -8,7 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0 10px; /* Added padding on left and right */
+            padding: 0 10px;
             background-color: #f5f5f5;
             display: flex;
             justify-content: center;
@@ -25,6 +25,12 @@
             width: 400px;
             text-align: center;
             position: relative;
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px auto; /* Center the logo with spacing */
+            display: block;
         }
         h1 {
             font-size: 1.5em;
@@ -45,7 +51,7 @@
         .utc-time {
             font-size: 1em;
             margin-top: 20px;
-            margin-bottom: 40px; /* Added margin to create space between time and footer */
+            margin-bottom: 40px;
         }
         @media (max-width: 600px) {
             .container {
@@ -63,6 +69,8 @@
 </head>
 <body>
     <div class="container">
+        <!-- Logo -->
+        <img src="Mask group.png" alt="Logo" class="logo">
         <h1>Expiring Snippet</h1>
         <p>You are currently viewing a snippet that will expire soon. After 10:00 AM, this snippet will no longer be visible in the mobile apps.</p>
         <div class="utc-time" id="utcTime"></div>
@@ -74,8 +82,8 @@
     <script>
         function updateUTC() {
             const now = new Date();
-            const utcString = now.toISOString().replace('T', ' ').substring(0, 19);
-            document.getElementById('utcTime').textContent = `Current UTC Time: ${utcString}`;
+            const utcTime = now.toISOString().substring(11, 19); // Extracts the time part (HH:MM:SS)
+            document.getElementById('utcTime').textContent = `Current Time: ${utcTime}`;
         }
 
         updateUTC();
